@@ -49,13 +49,14 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-
-
-                data.clear();
-                data.addAll((ArrayList<String>)results.values);
-                notifyDataSetChanged();
-
-
+                if(results.count > 0) {
+                    data.clear();
+                    data.addAll((ArrayList<String>)results.values);
+                    notifyDataSetChanged();
+                }
+                else {
+                    notifyDataSetInvalidated();
+                }
             }
         };
     }

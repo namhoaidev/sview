@@ -6,9 +6,11 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +33,12 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initData();
 
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myList);
+
         adapter = new MyArrayAdapter(this, R.layout.item_list_view, myList);
         listView.setAdapter(adapter);
+
+        autoCompleteTextView.setAdapter(adapter);
     }
 
     private void initData() {
